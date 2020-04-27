@@ -9,8 +9,9 @@ import {
 
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
+    // tslint:disable-next-line: array-type
     keys(): string[];
-    <T>(id: string): T;
+    <T>(id: string): Array<T>;
   };
 };
 
@@ -22,4 +23,4 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
-context.keys().map(context);
+context.keys().forEach(context);
